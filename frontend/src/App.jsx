@@ -4,16 +4,21 @@
 import './App.css'
 import {Routes, Route, BrowserRouter } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
+import AuthenticationPage from './pages/AuthenticationPage'
+import { AuthProvider } from './context/AuthContext'
+import VedioMeet from './pages/VedioMeet'
 
 function App() {
 
   return (
     <BrowserRouter>
-    {/* <Router> */}
+    <AuthProvider>
       <Routes>
         <Route path="/" element={<LandingPage/>}/>
+        <Route path="/auth" element={<AuthenticationPage/>}/>
+        <Route path="/:url" element={<VedioMeet/>} />
       </Routes>
-    {/* </Router> */}
+      </AuthProvider>
     </BrowserRouter>
   )
 }
